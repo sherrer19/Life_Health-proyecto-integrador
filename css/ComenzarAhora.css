@@ -78,15 +78,24 @@ img{
     box-shadow: 0px 8px 0px 0px #fec402;
 }
 main{
-    min-height: 110vh;
+    min-height: 90%;
     width: 100%;   
-    margin-top: 5%;
+    background-image: url(/images/pesas.jpg);  
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+   
 }
-main .form1{
+
+main .formulario{
+    
     width: 70%;
     margin: auto;
-    padding: 40px 10px;
-    border: 2px #fec402 solid;
+    padding: 30px 20px;
+    box-shadow: 3px 6px 16px 1px;
+    margin: 1px auto;
+    color: whitesmoke;
 
 }
 .footer{
@@ -121,4 +130,38 @@ main .form1{
 .footer .der{
     width: 33%;  
     text-align: center; 
+}
+
+@media (max-width: 770px) {
+    .header .iniciosecion a{
+        text-decoration: none;
+        color: black;
+        position: absolute;
+        border-radius: 5px;
+        background-color: #fec402;
+        right: 20px;
+        top: 25px;
+        width: 100px;
+        height: 40px;
+        align-content: center;
+        text-align: center;
+        box-shadow: 1px 1px 1px 1px;
+}
+}
+
+@media (max-width: 530px) {
+    .header .iniciosecion a{
+        text-decoration: none;
+        color: black;
+        position: absolute;
+        border-radius: 5px;
+        background-color: #fec402;
+        right: 20px;
+        top: 25px;
+        width: 100px;
+        height: 40px;
+        align-content: center;
+        text-align: center;
+        box-shadow: 1px 1px 1px 1px;
+}
 }

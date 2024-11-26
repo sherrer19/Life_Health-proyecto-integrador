@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life & Healf</title>
+    <title>Life & Health</title>
     <link rel="shortcut icon" href="../images/ico.ico" type="image/x-icon">
     <link rel="stylesheet"x1 href="/css/ComenzarAhora.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
     <Header>
@@ -15,87 +16,100 @@
             </div>
             <strong><div class="nav">
                 <a class="init" href="../html/index.html">Inicio</a>
-                <a href="rutinas.html">Ritunas</a>
+                <a href="rutinas.html">Rutinas</a>
                 <a href="alimentacion.html">Alimentacion</a>
                 <a href="centroayuda.html">Centro De Ayuda</a>
             </div></strong>
             <div class="title">
-                <h1>LIFE & HEALF</h1>
+                <h1>LIFE & HEALTH</h1>
                 <p>Tu bienestar &#128155; nuestra misión</p>
             </div>
-                   </div>        
+        </div>        
     </Header>
     <main>
-        <div class="form1">
-            <form  autocomplete="off">
-                    <label for="lnom">Nombre completo</label>
-                         <input type="text" name="nombre" id="lnom" maxlength="100">
-                <br>
-                     <label for="ldir">Direcion</label>
-                          <input type="text" name="direccion" id="ldir">
-                <br>
-                     <label for="lcel">Ingrese su movil</label>
-                         <input type="tel" name="tel" id="ltel" maxlength="10" pattern="[0-9]{10}" placeholder="Ingresar 10 digitos">
-                <br>
-                     <label for="lfen">Fecha de nacimiento</label>
-                         <input type="date" name="Fechanac" id="lfen">
-                <br> 
-                     <label for="lcnaci">Indique la ciudad de nacimiento</label>
-                         <select name="ciudad" id="lcnaci">
-                             <option value="Elija ciudad">Elija Ciudad</option>
-                             <option value="caldas">Medellin</option>
-                             <option value="itagui">Bogota</option>
-                             <option value="bello">Cali</option>
-                             <option value="medellin">Barranquilla</option>
-                         </select>
-                <br>  
-                     <label for="lcorreo">Correo</label>
-                            <input type="email" name="correo" id="lcorreo" placeholder="correo@correo.com">
-                <br>
-                        <label for="lpeso">Peso Actual en (kg)</label>
-                            <input type="number" name="peso" id="lpeso" min="40" max="300">
-                <br>
-                        <label for="ltalla">Estatura Actual en (Cm)</label>
-                             <input type="number" name="peso" id="lpeso" min="40" max="250" placeholder="65">
-                <br>
-                        <label for="lpw">Contraseña</label>
-                            <input type="password" name="pw" id="lpw">  
-                <br>
-                        <label for="lpw">Confirme la Contraseña</label>
-                            <input type="password" name="pw" id="lpw">  
-                <br>  
-                <br>  
-                                   
-                        <fieldset>
-                        <legend>Indique cual es tu meta</legend>
-                        
-                                <label for="lperderpeso">Perder peso</label>
-                                    <input type="checkbox" name="tema1" id="lperderpeso">
-                                <br>
-                                <label for="ganarpeso">Ganar Peso</label>
-                                    <input type="checkbox" name="tema2" id="ganarpeso">
-                                <br>
-                                <label for="ltonificar">Tonifocar</label>
-                                    <input type="checkbox" name="tema3" id="ltonificar">
-                                <br>
-                                <label for="lResistencia">Resistencia</label>
-                                    <input type="checkbox" name="tema4" id="lResistencia">
-                                <br>
-                                    <label for="lhipertrofia">Hipertrofia</label>
-                                        <input type="checkbox" name="tema4" id="lhipertrofia">
-                                        <br>
-                        </fieldset>                
-                <br>
-                    <label for="lcomentarios">Comentarios</label>
-                <br>
-                    <textarea name="Comentarios" id="lcomentarios" cols="115" rows="10" spellcheck="true" placeholder="Escriba sus comentario"></textarea>
-                <br>
-                <br>
-                    <input type="submit" value="Comenzar Ahora">
-                    <input type="reset" value="Reiniciar">
-           </form> 
-        </div>
-    </main>
+        <div class="formulario">
+          <form class="row g-3">
+              <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Nombre</label>
+                <input type="email" class="form-control" id="inputEmail4">
+              </div>
+              <div class="col-md-6">
+                  <label for="inputEmail4" class="form-label">Apellidos</label>
+                  <input type="email" class="form-control" id="inputEmail4">
+              </div>
+              <div class="col-md-6">
+                  <label for="inputEmail4" class="form-label">Dirección</label>
+                  <input type="email" class="form-control" id="inputEmail4">
+              </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="specificSizeSelect">Ciudad</label>
+                  <select class="form-select" id="specificSizeSelect">
+                    <option selected>Elija la ciudad</option>
+                    <option value="1">Medellin</option>
+                    <option value="2">Bogota</option>
+                    <option value="3">Cali</option>
+                    <option value="3">Manizales</option>
+                    <option value="3">Barranquilla</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+                  <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="inputEmail4" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="inputEmail4" placeholder="correo@correo.com">
+                </div>
+                <div class="col-md-6">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1">
+                  <div id="emailHelp" class="form-text">Maximo 10 caracteres, Una mayuscula y un caracter especifico.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="inputPassword4" class="form-label">Confirme la clave</label>
+                  <input type="password" class="form-control" id="inputPassword4">
+                  <div id="emailHelp" class="form-text">las claves deben coincidir.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="inputEmail4" class="form-label">Peso actual</label>
+                  <input type="email" class="form-control" id="inputEmail4" placeholder="Ingrese tu peso en KG">
+                </div>
+                <div class="col-md-6">
+                  <label for="inputEmail4" class="form-label">Estatura actual</label>
+                  <input type="email" class="form-control" id="inputEmail4" placeholder="Ingresa tu estatura en Metros">
+                </div>              
+                    <fieldset class="col-md-6">
+                      <legend class="col-form-label col-sm-2 pt-0"><strong>Objetivo</strong></legend>
+                      <div class="col-sm-10">
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                            <label class="form-check-label" for="gridRadios1">
+                              Perder Peso
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                            <label class="form-check-label" for="gridRadios2">
+                              Ganar Peso
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option3">
+                            <label class="form-check-label" for="gridRadios3">
+                              Tonificar
+                            </label>
+                          </div>
+                      </div>
+                </fieldset>
+                <hr>
+                <div class="col-md-6">
+                  <textarea class="form-control" placeholder="Ingrese aqui sus comentarios" id="floatingTextarea2" style="height: 100px"></textarea>
+                  <label for="floatingTextarea2"></label>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>        
+  </main>
     <footer>
         <div class="footer">
             <div class="izq">
@@ -106,10 +120,10 @@
                 <a href="https://web.whatsapp.com/" target="_blank"><img src="/images/whatsapp1.png" alt="Logo Waspp"></a>
             </div>
             <div class="center">
-                <h2>!Siguemos¡</h2>               
+                <h2>!Siguenos¡</h2>               
                 <a href="https://www.instagram.com/?hl=es" target="_blank" ><img src="/images/instagram.png"alt="Logo Instagram"></a>
                 <a href="https://www.facebook.com/reel/565950225767944" target="_blank" ><img src="/images/facebook.png" alt="Logo Facebook"></a>
-                <a href="https://www.facebook.com/reel/565950225767944" target="_blank" ><img src="/images/twitter.png" alt="Logo twitter"></a>
+                <a href="https://x.com/" target="_blank" ><img src="/images/twitter.png" alt="Logo twitter"></a>
                 <a href="https://www.tiktok.com/es/" target="_blank" ><img src="/images/tiktok.png" alt="Logo tiktok"></a>
             </div>
             <div class="der">
@@ -117,6 +131,8 @@
                 <strong><p>Copyright 2023 &copy; Life & Health</p></strong>
             </div>
         </div>
-    </footer>    
+    </footer> 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>   
 </body>
 </html>
