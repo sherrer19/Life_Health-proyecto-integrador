@@ -141,16 +141,6 @@ main .search-container {
     transition: transform 1s ease, opacity .3s ease-out
 }
 
-.mb-4{
-    color: #fec402;
-}
-
-.text-primary , .col-md-6{
-    text-align: center;
-
-}
-
-
 .footer{
     min-height: 20vh;
     display: flex;
