@@ -6,46 +6,58 @@
     <title>Life & Health</title>
     <link rel="shortcut icon" href="../images/ico.ico" type="image/x-icon">
     <link rel="stylesheet"x1 href="/css/rutina.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <Header>
-        <div class="header">
-            <div class="logo">
-                <a href="index.html"><img src="../images/logo2.png" alt="Logo life & Health"></a>
-            </div>
-            <strong><div class="nav">
-                <a href="../html/index.html">Inicio</a>
-                <a class="init" href="rutinas.html">Rutinas</a>
-                <a href="alimentacion.html">Alimentacion</a>
-                <a href="centroayuda.html">Centro De Ayuda</a>
-                <a href="sobreNosotros.html">Nosotros</a>
-            </div></strong>
-            <div class="title">
-                <h1>LIFE & HEALTH</h1>
-                <p>Tu bienestar &#128155; Nuestra misión</p>
-            </div>
-            <div class="iniciosecion">
-                <strong><a href="ComenzarAhora.html">Comenzar Ahora</a></strong>
-            </div>
-        </div>        
-    </Header>
+    <header class="header">
+        <div class="logo">
+            <img src="../images/logo2.png" alt="Logo Life & Health">
+        </div>
+        
+        <div class="title">
+            <h1>LIFE & HEALTH</h1>
+            <p>Tu bienestar &#128155; Nuestra misión</p>
+        </div>
+        
+        <nav class="nav">
+            <a class="init" href="../html/index.html">Inicio</a>
+            <a class="ruti" href="rutinas.html">Rutinas</a>
+            <a class="alim" href="alimentacion.html">Alimentación</a>
+            <a class="cent" href="centroayuda.html">Centro de Ayuda</a>
+            <a class="sobre" href="sobreNosotros.html">Nosotros</a>
+        </nav>
+        
+        <div class="iniciosecion">
+            <a href="/html/ComenzarAhora.html">Comenzar Ahora</a>
+        </div>
+    </header>
     <main>
         <section class="rutinas">
             <h2>Rutinas Para Cada Objetivo</h2>
             <div class="caja">
                 <div class="objetivo">
                     <h3>Ganar Masa Muscular</h3>
-                    <video controls autoplay src="../videos/ganar.mp4">Descargado de Pexels</video>
+                    <div class="video-container">
+                        <video autoplay muted loop playsinline>
+                            <source src="../Videos/ganar.mp4" type="video/mp4">
+                            Tu navegador no soporta el video
+                        </video>
+                    </div>
                     <p>Rutinas orientadas al crecimiento muscular mediante ejercicios de fuerza y levantamiento de pesas.</p>
                     <ul>
-                        <li><strong>Entrenamiento de pesas:</strong>  Un plan de 4 semanas para aumentar la masa muscular en todo el cuerpo.</li>
-                        <li><strong>Rutina de fuerza:</strong>  Levantamiento de pesas en 5 días, enfocado en la progresión de cargas.</li>
+                        <li><strong>Entrenamiento de pesas:</strong> Un plan de 4 semanas para aumentar la masa muscular en todo el cuerpo.</li>
+                        <li><strong>Rutina de fuerza:</strong> Levantamiento de pesas en 5 días, enfocado en la progresión de cargas.</li>
                         <li><strong>Entrenamiento de hipertrofia:</strong> Aumenta la masa muscular con repeticiones controladas y cargas progresivas.</li>
                     </ul>
                 </div>
                 <div class="objetivo">
                     <h3>Tonificar</h3>
-                    <video controls autoplay src="../videos/pilates.mp4">Descargado de Pexels</video>
+                    <div class="video-container">
+                        <video autoplay muted loop playsinline>
+                            <source src="../Videos/toning workout.mp4" type="video/mp4">
+                            Tu navegador no soporta el video
+                        </video>
+                    </div>
                     <p>Estos entrenamientos están enfocados en la definición y fortalecimiento muscular sin un aumento significativo de volumen.</p>
                     <ul>
                         <li><strong>Pilates:</strong> Movimientos de bajo impacto para fortalecer y tonificar los músculos.</li>
@@ -55,7 +67,12 @@
                 </div>
                 <div class="objetivo">
                     <h3>Perder Peso</h3>
-                    <video controls autoplay src="../videos/HIIT.mp4">Descargado de Pexels</video>
+                    <div class="video-container">
+                        <video autoplay muted loop playsinline>
+                            <source src="../Videos/Video.mp4" type="video/mp4">
+                            Tu navegador no soporta el video
+                        </video>
+                    </div>
                     <p>Estas rutinas están diseñadas para quemar grasa de manera eficiente y mejorar tu salud cardiovascular.</p>
                     <ul>
                         <li><strong>HIIT de 30 minutos:</strong> Entrenamiento de intervalos de alta intensidad para maximizar la quema de calorías.</li>
@@ -91,27 +108,52 @@
             </ol>
         </section>
     </main>
-    <footer>
-        <div class="footer">
-            <div class="izq">
-                <p>life&heal@correo.com</p>
-                <p>Tel: 2 34 56 89</p>
-                <p>Avenida Siempreviva 742</p>
-                <p>Medellin - Antioquia</p>
-                <a href="https://web.whatsapp.com/" target="_blank"><img src="/images/whatsapp1.png" alt="Logo Waspp"></a>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <!-- Columna de contacto -->
+            <div class="footer-column contact-info">
+                <h3 class="footer-title">Contacto</h3>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>life&health@correo.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>Tel: 2 34 56 69</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Avenida Siempreviva 742<br>Medellín - Antioquia</span>
+                </div>
             </div>
-            <div class="center">
-                <h2>!Siguenos¡</h2>
-                <a href="https://www.instagram.com/?hl=es" target="_blank" ><img src="/images/instagram.png"alt="Logo Instagram"></a>
-                <a href="https://www.facebook.com/reel/565950225767944" target="_blank" ><img src="/images/facebook.png" alt="Logo Facebook"></a>
-                <a href="https://x.com/" target="_blank" ><img src="/images/twitter.png" alt="Logo twitter"></a>
-                <a href="https://www.tiktok.com/es/" target="_blank" ><img src="/images/tiktok.png" alt="Logo tiktok"></a>
+    
+            <!-- Columna de redes sociales -->
+            <div class="footer-column social-media">
+                <h3 class="footer-title">Síguenos</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                </div>
+                <p class="newsletter-text">Suscríbete a nuestro newsletter</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <button type="submit">Suscribir</button>
+                </form>
             </div>
-            <div class="der">
-                <p>Todos los derechos son reservados</p>
-                <strong><p>Copyright 2023 &copy; Life & Health</p></strong>
+    
+            <!-- Columna de derechos -->
+            <div class="footer-column copyright">
+                <p class="rights-text">Transformando vidas a través del fitness</p>
+                <div class="legal-links">
+                    <a href="#">Términos y condiciones</a>
+                    <a href="#">Política de privacidad</a>
+                </div>
+                <p class="copyright-text">Todos los derechos reservados<br>Copyright 2023 © Life & Health</p>
             </div>
         </div>
-    </footer> 
+    </footer>
 </body>
 </html>
