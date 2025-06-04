@@ -235,8 +235,11 @@ padding: 5rem 0;
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .team-card {
@@ -247,7 +250,26 @@ padding: 5rem 0;
   transition: all 0.3s;
 }
 
+.team-card-extra {
+  grid-column: 2;
+  grid-row: 2;
+  margin-top: 30px;
+  background: var(--light);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  width: 360px;
+  padding: 25px;
+  text-align: center;
+  justify-self: center;
+  transition: all 0.3s;
+}
+
+
 .team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.team-card-extra:hover {
   transform: translateY(-10px);
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
