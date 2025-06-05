@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Life & Health</title>
+    <link rel="shortcut icon" href="../images/ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+    <header class="header">
+      <div class="logo">
+        <img src="../images/logo2.png" alt="Logo Life & Health" />
+      </div>
+
+      <div class="title">
+        <h1>LIFE & HEALTH</h1>
+        <p>Tu bienestar 💚 Nuestra misión</p>
+      </div>
+
+      <nav class="nav">
+        <a class="init" href="../html/index.html">Inicio</a>
+        <a class="ruti" href="rutinas.html">Rutinas</a>
+        <a class="alim" href="alimentacion.html">Alimentación</a>
+        <a class="cent" href="centroayuda.html">Centro de Ayuda</a>
+        <a class="sobre" href="sobreNosotros.html">Nosotros</a>
+      </nav>
+
+      <div class="iniciosecion">
+        <a href="/html/ComenzarAhora.html">Comenzar Ahora</a>
+      </div>
+    </header>
+
+    <main class="login-main">
+        <section class="login-section">
+            <div class="login-container">
+                <div class="login-header">
+                    <h1><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</h1>
+                    <p>Accede a tu plan personalizado</p>
+                </div>
+
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="loginEmail">Correo Electrónico</label>
+                        <input type="email" id="loginEmail" required placeholder="tucorreo@ejemplo.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loginPassword">Contraseña</label>
+                        <input type="password" id="loginPassword" required>
+                        <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-unlock-alt"></i> Ingresar
+                    </button>
+
+                    <div class="register-link">
+                        ¿No tienes cuenta? <a href="/html/ComenzarAhora.html">Regístrate aquí</a>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-container">
+        <!-- Columna de contacto -->
+        <div class="footer-column contact-info">
+          <h3 class="footer-title">Contacto</h3>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>life&health@correo.com</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <span>Tel: 2 34 56 69</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Avenida Siempreviva 742<br />Medellín - Antioquia</span>
+          </div>
+        </div>
+
+        <!-- Columna de redes sociales -->
+        <div class="footer-column social-media">
+          <h3 class="footer-title">Síguenos</h3>
+          <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+          </div>
+          <p class="newsletter-text">Suscríbete a nuestro newsletter</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Tu correo electrónico" required />
+            <button type="submit">Suscribir</button>
+          </form>
+        </div>
+
+        <!-- Columna de derechos -->
+        <div class="footer-column copyright">
+          <p class="rights-text">Transformando vidas a través del fitness</p>
+          <div class="legal-links">
+            <a href="#">Términos y condiciones</a>
+            <a href="#">Política de privacidad</a>
+          </div>
+          <p class="copyright-text">
+            Todos los derechos reservados<br />Copyright 2023 © Life & Health
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- Botón flotante de ayuda -->
+    <div class="floating-help">
+      <button
+        class="help-btn"
+        onclick="window.location.href='centroayuda.html'"
+      >
+        <i class="fas fa-question"></i>
+      </button>
+    </div>
+    <script src="../JS/login.js"></script>
+</body>
+</html>

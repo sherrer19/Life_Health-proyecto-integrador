@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Plan - Perder Peso</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="user-profile">
+                <img src="../images/user-avatar.jpg" alt="Usuario" class="avatar">
+                <h3 id="userName">Nombre Usuario</h3>
+                <p id="userPlan">Plan: Perder Peso</p>
+            </div>
+            
+            <nav class="dashboard-nav">
+                <a href="#" class="active"><i class="fas fa-home"></i> Inicio</a>
+                <a href="#"><i class="fas fa-dumbbell"></i> Mi Rutina</a>
+                <a href="#"><i class="fas fa-utensils"></i> Plan Alimenticio</a>
+                <a href="#"><i class="fas fa-chart-line"></i> Progreso</a>
+                <a href="#"><i class="fas fa-user-cog"></i> Mi Perfil</a>
+                <a href="#"><i class="fas fa-credit-card"></i> Membresía</a>
+                <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <h1><i class="fas fa-weight"></i> Plan para Perder Peso</h1>
+                <div class="user-actions">
+                    <span id="welcomeMessage">Bienvenido, <span id="welcomeName"></span></span>
+                </div>
+            </header>
+
+            <section class="content-section">
+                <div class="plan-overview">
+                    <h2>Tu Plan Personalizado</h2>
+                    <div class="plan-cards">
+                        <div class="plan-card">
+                            <i class="fas fa-running"></i>
+                            <h3>Rutina Semanal</h3>
+                            <p>5 días de ejercicio combinado</p>
+                            <a href="#" class="btn">Ver Rutina</a>
+                        </div>
+                        <div class="plan-card">
+                            <i class="fas fa-utensils"></i>
+                            <h3>Plan Nutricional</h3>
+                            <p>Dieta balanceada de 1800 kcal</p>
+                            <a href="#" class="btn">Ver Menú</a>
+                        </div>
+                        <div class="plan-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Seguimiento</h3>
+                            <p>Registra tu progreso</p>
+                            <a href="#" class="btn">Ver Progreso</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="weekly-plan">
+                    <h2>Rutina de Esta Semana</h2>
+                    <!-- Contenido de la rutina -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/JS/dashboard.js"></script>
+</body>
+</html>

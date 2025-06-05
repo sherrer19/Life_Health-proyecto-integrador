@@ -1,0 +1,68 @@
+.login-main {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)),
+                url("../images/login-bg.jpg") center/cover no-repeat fixed;
+    padding: 3rem 0;
+}
+
+.login-container {
+    max-width: 500px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.login-header {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.login-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.login-header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.login-form {
+    padding: 2rem;
+}
+
+.forgot-password {
+    display: block;
+    text-align: right;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    color: var(--secondary);
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.register-link a {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
