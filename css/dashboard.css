@@ -1,117 +1,1559 @@
+/* ==========================================================================
+   1. Definición de Variables CSS (Custom Properties)
+   ========================================================================== */
+
 :root {
-    --sidebar-width: 280px;
-    --header-height: 80px;
+  /* Paleta de colores principal */
+  --primary: #2c3e50; /* Color primario (azul oscuro/gris) */
+  --secondary: #3498db; /* Color secundario (azul brillante) */
+  --accent: #e74c3c; /* Color de acento (rojo) */
+  --success: #2ecc71; /* Color para éxito (verde) */
+  --warning: #f39c12; /* Color para advertencias (amarillo) */
+  --danger: #e74c3c; /* Color para peligro (rojo) */
+
+  /* Tonos de la interfaz */
+  --light: #ecf0f1; /* Color claro (gris muy claro) */
+  --dark: #2c3e50; /* Color oscuro (coincide con el primario) */
+  --gray: #95a5a6; /* Color gris medio */
+  --light-gray: #f5f7fa; /* Color de fondo (gris aún más claro) */
+
+  /* Dimensiones de la interfaz */
+  --sidebar-width: 300px; /* Ancho de la barra lateral */
+  --header-height: 80px; /* Altura del encabezado */
+
+  /* Otros estilos globales */
+  --card-border-radius: 10px; /* Radio de borde para tarjetas */
+  --soft-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Sombra suave para efectos hover */
 }
 
+/* ==========================================================================
+   2. Estilos Base y Globales
+   ========================================================================== */
+
+/* Reseteo universal de estilos y configuración de la fuente */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Asegura que padding y border no afecten el tamaño total */
+  font-family: "Poppins", sans-serif;
+}
+
+/* Estilos aplicados al cuerpo del documento */
+body {
+  background-color: var(--light-gray);
+  color: #333;
+  line-height: 1.6; /* Espaciado de línea para mejor legibilidad */
+}
+
+/* Contenedor principal del dashboard usando Flexbox */
 .dashboard-container {
-    display: flex;
-    min-height: 100vh;
+  display: flex;
+  min-height: 100vh; /* Ocupa al menos toda la altura de la pantalla */
 }
 
+/* Contenedor genérico para centrar contenido */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ==========================================================================
+   3. Estilos de la Barra Lateral (Sidebar)
+   ========================================================================== */
+
+/* Estilo del contenedor de la barra lateral */
 .sidebar {
-    width: var(--sidebar-width);
-    background-color: #2c3e50;
-    color: white;
-    position: fixed;
-    height: 100vh;
-    padding: 2rem 1.5rem;
-    transition: all 0.3s;
+  width: var(--sidebar-width);
+  background: linear-gradient(
+    180deg,
+    var(--primary),
+    #1a252f
+  ); /* Gradiente vertical */
+  color: white;
+  position: fixed; /* Fijo en la pantalla */
+  height: 100vh;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 100; /* Asegura que esté por encima de otros elementos */
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease; /* Transición para responsive */
 }
 
+/* Estilos para el perfil de usuario en la barra lateral */
 .user-profile {
-    text-align: center;
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Línea divisoria sutil */
 }
 
 .avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid var(--primary);
-    margin-bottom: 1rem;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover; /* Asegura que la imagen no se deforme */
+  border: 3px solid var(--secondary);
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+.user-profile h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.user-profile p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7); /* Color de texto semitransparente */
+}
+
+/* Estilos para el círculo de progreso en la barra lateral */
+.progress-circle {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.circle-progress {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 0.5rem;
+}
+
+.circle-chart {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg); /* Inicia el progreso desde la parte superior */
+}
+
+.circle-bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.1); /* Fondo del círculo */
+  stroke-width: 3;
+}
+
+.circle-fill {
+  fill: none;
+  stroke: var(--success); /* Color del progreso */
+  stroke-width: 3;
+  stroke-linecap: round; /* Bordes redondeados para la línea de progreso */
+  animation: circle-fill-animation 1.5s ease-in-out forwards;
+}
+
+.progress-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centrado perfecto */
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Estilos para la navegación principal en la barra lateral */
 .dashboard-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem; /* Espacio entre enlaces */
+  flex-grow: 1; /* Ocupa el espacio restante */
 }
 
 .dashboard-nav a {
-    color: white;
-    padding: 0.8rem 1rem;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    transition: all 0.3s;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: all 0.3s;
+  font-size: 0.95rem;
+  text-decoration: none;
 }
 
-.dashboard-nav a:hover, .dashboard-nav a.active {
-    background-color: var(--primary);
-    text-decoration: none;
+.dashboard-nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  transform: translateX(5px); /* Efecto de desplazamiento al pasar el ratón */
 }
 
+.dashboard-nav a.active {
+  background-color: var(--secondary);
+  color: white;
+  font-weight: 500;
+}
+
+.dashboard-nav a i {
+  width: 20px; /* Ancho fijo para alinear los iconos */
+  text-align: center;
+}
+
+/* ==========================================================================
+   4. Estilos del Contenido Principal (Main Content)
+   ========================================================================== */
+
+/* Contenedor del contenido principal */
 .main-content {
-    margin-left: var(--sidebar-width);
-    flex: 1;
-    background-color: #f5f7fa;
+  margin-left: var(--sidebar-width); /* Deja espacio para la barra lateral */
+  flex: 1; /* Ocupa el resto del ancho */
+  min-height: 100vh;
 }
 
+/* Encabezado del contenido */
 .content-header {
-    background-color: white;
-    padding: 1.5rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    height: var(--header-height);
+  background-color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  height: var(--header-height);
+  position: sticky; /* Fijo en la parte superior al hacer scroll */
+  top: 0;
+  z-index: 10;
 }
 
+.header-left h1 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.header-left h1 i {
+  color: var(--secondary);
+}
+
+/* Estilo para las migas de pan (breadcrumb) */
+.breadcrumb {
+  font-size: 0.8rem;
+  color: var(--gray);
+  margin-top: 0.3rem;
+}
+
+.breadcrumb a {
+  color: var(--gray);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb span {
+  color: var(--dark);
+  font-weight: 500; /* La página actual es más oscura y en negrita */
+}
+
+/* Acciones del usuario en el encabezado */
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Campana de notificaciones */
+.notification-bell {
+  position: relative;
+  cursor: pointer;
+}
+
+.notification-bell i {
+  font-size: 1.2rem;
+  color: var(--dark);
+}
+
+.notification-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: var(--accent);
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+/* Saludo al usuario */
+.user-greeting {
+  text-align: right;
+}
+
+.user-greeting span {
+  display: block;
+  font-size: 0.9rem;
+}
+
+#welcomeName {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.user-status {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  color: var(--gray);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--success);
+  border-radius: 50%;
+}
+
+.avatar-sm {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--secondary);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   5. Estilos de Secciones de Contenido y Componentes Comunes
+   ========================================================================== */
+
+/* Estilos generales para las secciones de contenido */
 .content-section {
-    padding: 2rem;
+  padding: 2rem;
+  display: none; /* Oculto por defecto, se muestra con JS */
+  animation: fadeIn 0.5s ease-out;
 }
 
-.plan-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+.content-section.active-section {
+  display: block; /* Muestra la sección activa */
 }
 
-.plan-card {
-    background-color: white;
-    border-radius: 10px;
-    padding: 1.5rem;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s;
+/* Contenedor base para widgets dentro de las secciones */
+.widget-container {
+  background-color: white;
+  border-radius: var(--card-border-radius);
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
 }
 
-.plan-card:hover {
-    transform: translateY(-5px);
+/* Encabezado común para secciones y widgets */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
 }
 
-.plan-card i {
-    font-size: 2.5rem;
-    color: var(--primary);
-    margin-bottom: 1rem;
+.section-header h2 {
+  font-size: 1.3rem;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
 }
 
+.section-header h2 i {
+  color: var(--secondary);
+  font-size: 1.1rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 10px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--gray);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Enlace para "Ver todo" */
+.view-all {
+  font-size: 0.9rem;
+  color: var(--secondary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.view-all:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   6. Estilos de Componentes Reutilizables (Botones, Tarjetas)
+   ========================================================================== */
+
+/* Estilos base para botones */
 .btn {
-    display: inline-block;
-    background-color: var(--primary);
-    color: white;
-    padding: 0.6rem 1.2rem;
-    border-radius: 5px;
-    margin-top: 1rem;
-    transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--secondary);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+  gap: 0.5rem;
 }
 
 .btn:hover {
-    background-color: var(--secondary);
-    text-decoration: none;
+  background-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.btn i {
+  font-size: 0.8rem;
+}
+
+/* Botón de solo icono */
+.btn-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--gray);
+  transition: all 0.3s;
+}
+
+.btn-icon:hover {
+  background-color: var(--light-gray);
+  color: var(--dark);
+}
+
+/* Variaciones de botones */
+.btn-primary-feature {
+  padding: 0.8rem 1.8rem !important;
+  font-size: 1rem !important;
+}
+
+.btn-danger {
+  background-color: var(--danger);
+}
+
+.btn-danger:hover {
+  background-color: #c0392b; /* Rojo más oscuro */
+}
+
+.btn-secondary {
+  background-color: var(--light-gray);
+  color: var(--primary);
+}
+
+.btn-secondary:hover {
+  background-color: #d8dcdf;
+  color: var(--primary);
+}
+
+/* Estilos base para tarjetas (plan cards, etc.) */
+.plan-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.plan-card {
+  background-color: white;
+  border-radius: var(--card-border-radius);
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  border-top: 3px solid var(--secondary);
+  overflow: hidden;
+}
+
+.plan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--soft-shadow);
+}
+
+.card-icon {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(52, 152, 219, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.card-icon i {
+  font-size: 1.5rem;
+  color: var(--secondary);
+}
+
+.plan-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--dark);
+}
+
+.plan-card p {
+  font-size: 0.9rem;
+  color: var(--gray);
+  margin-bottom: 1.2rem;
+}
+
+/* Barra de progreso dentro de una tarjeta */
+.card-progress {
+  margin-bottom: 1.5rem;
+}
+
+.progress-bar {
+  height: 6px;
+  background-color: var(--light-gray);
+  border-radius: 3px;
+  margin-bottom: 0.3rem;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--secondary), var(--primary));
+}
+
+.card-progress span {
+  font-size: 0.8rem;
+  color: var(--gray);
+}
+
+/* ==========================================================================
+   7. Estilos Específicos por Sección
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   7.1. Sección Inicio (Dashboard Home)
+   -------------------------------------------------------------------------- */
+
+/* Progreso diario */
+.daily-progress {
+  background-color: white;
+  border-radius: var(--card-border-radius);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+}
+
+.daily-progress h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.progress-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.progress-item {
+  background-color: var(--light-gray);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.progress-item.completed {
+  background-color: rgba(46, 204, 113, 0.1);
+}
+
+.progress-item.completed i {
+  color: var(--success);
+}
+
+.progress-detail {
+  margin-left: auto; /* Empuja el detalle a la derecha */
+  font-size: 0.8rem;
+  color: var(--gray);
+  font-weight: 500;
+}
+
+/* Actividad reciente */
+.recent-activity {
+  background-color: white;
+  border-radius: var(--card-border-radius);
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+}
+
+.activity-list {
+  margin-top: 1rem;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-icon {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(52, 152, 219, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.activity-details {
+  flex-grow: 1;
+}
+
+.activity-meta {
+  font-size: 0.75rem;
+  color: var(--secondary);
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   7.2. Sección Rutinas
+   -------------------------------------------------------------------------- */
+
+.weekly-plan {
+  background-color: white;
+  border-radius: var(--card-border-radius);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+}
+
+.week-navigation {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.week-navigation span {
+  font-weight: 500;
+}
+
+.nav-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--light-gray);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark);
+  transition: all 0.3s;
+}
+
+.nav-btn:hover {
+  background-color: var(--secondary);
+  color: white;
+}
+
+.week-days {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.day-card {
+  background-color: var(--light-gray);
+  border-radius: 8px;
+  padding: 1rem;
+  transition: all 0.3s;
+}
+
+.day-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.day-card.rest-day {
+  background-color: rgba(
+    52,
+    152,
+    219,
+    0.1
+  ); /* Color especial para días de descanso */
+}
+
+.day-header {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.day-header h3 {
+  font-size: 1rem;
+}
+
+.workout-type {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.workout-details {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+.workout-details li {
+  font-size: 0.8rem;
+  color: var(--gray);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.rest-message {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.completion-status {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.3rem;
+  border-radius: 4px;
+}
+
+.completion-status.completed {
+  background-color: rgba(46, 204, 113, 0.1);
+  color: var(--success);
+}
+
+.completion-status.pending {
+  background-color: rgba(241, 196, 15, 0.1);
+  color: var(--warning);
+}
+
+/* --------------------------------------------------------------------------
+   7.3. Sección Alimentación
+   -------------------------------------------------------------------------- */
+
+.nutrition-intro {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 3rem;
+  background: var(--light-gray);
+  padding: 2rem;
+  border-radius: var(--card-border-radius);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.intro-text h3 {
+  font-size: 1.8rem;
+}
+
+.nutrition-facts {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap; /* Para que se adapten en pantallas pequeñas */
+}
+
+.fact-item {
+  text-align: center;
+  background: white;
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  flex: 1;
+  min-width: 120px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.fact-value {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--secondary);
+}
+
+.fact-label {
+  font-size: 0.85rem;
+  color: var(--gray);
+}
+
+.intro-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* Títulos para los días del plan de comidas */
+.plan-day-title {
+  text-align: center;
+  font-size: 1.6rem;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  position: relative;
+  font-weight: 600;
+}
+
+.plan-day-title:after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: var(--secondary);
+  margin: 0.5rem auto 0;
+  border-radius: 3px;
+}
+
+/* Tarjetas de comida */
+.plan-card.highlight {
+  border-top: 4px solid var(--success); /* Resalta tarjetas importantes */
+}
+
+.card-header {
+  padding: 1rem 1.5rem;
+  background: linear-gradient(to right, var(--secondary), var(--success));
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.meal-time {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.meal-items {
+  padding: 1.5rem;
+  margin: 0;
+  list-style-type: none;
+}
+
+.meal-items li {
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed var(--light);
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.meal-items li:before {
+  content: "•";
+  color: var(--success);
+  font-size: 1.2rem;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.meal-items li:last-child {
+  border-bottom: none;
+}
+
+.nutrition-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 1.5rem;
+  background: var(--light-gray);
+  font-size: 0.85rem;
+  color: var(--gray);
+  font-weight: 600;
+  border-bottom-left-radius: var(--card-border-radius);
+  border-bottom-right-radius: var(--card-border-radius);
+}
+
+/* Sección de snacks */
+.snacks-section {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--card-border-radius);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 3rem;
+}
+
+.snacks-section h3 {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.snacks-section h3:after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: var(--secondary);
+  margin: 0.5rem auto 0;
+}
+
+.snack-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.snack-option {
+  background: var(--light-gray);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.snack-option h4 {
+  color: var(--secondary);
+}
+
+/* Sección de consejos nutricionales */
+.nutrition-tips {
+  margin-top: 3rem;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.tip-card {
+  background: white;
+  padding: 2rem 1.5rem;
+  border-radius: var(--card-border-radius);
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.tip-card:hover {
+  transform: translateY(-5px);
+}
+
+.tip-card i {
+  font-size: 2.5rem;
+  color: var(--success);
+  margin-bottom: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   7.4. Sección Progreso
+   -------------------------------------------------------------------------- */
+.subsection-title {
+  font-size: 1.2rem;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--light-gray);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+/* Métricas clave */
+.key-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.metric-card {
+  background-color: var(--light-gray);
+  border-radius: var(--card-border-radius);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.metric-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+}
+
+/* Gráficos */
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.chart-widget {
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: var(--card-border-radius);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Logros */
+.achievement-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.achievement-item:not(:last-child) {
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.achievement-item:hover {
+  background-color: var(--light-gray);
+}
+
+.achievement-icon {
+  font-size: 1.5rem;
+  color: var(--warning);
+}
+
+/* Galería de fotos */
+.photo-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.photo-item {
+  position: relative;
+  border-radius: var(--card-border-radius);
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 1 / 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.photo-item:hover img {
+  transform: scale(1.1);
+}
+
+.photo-date {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  color: white;
+  padding: 1rem 0.5rem 0.5rem;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.add-new-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--light-gray);
+  border: 2px dashed var(--gray);
+  color: var(--gray);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.add-new-photo:hover {
+  background-color: #e0e6e8;
+  color: var(--secondary);
+}
+
+/* --------------------------------------------------------------------------
+   7.5. Sección Video Coaching
+   -------------------------------------------------------------------------- */
+.featured-video-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  background-color: var(--light-gray);
+  padding: 2rem;
+  border-radius: var(--card-border-radius);
+  margin-bottom: 3rem;
+}
+
+.featured-video-thumbnail {
+  position: relative;
+  cursor: pointer;
+  border-radius: var(--card-border-radius);
+  overflow: hidden;
+}
+
+.featured-video-thumbnail img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.play-icon-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.featured-video-thumbnail:hover .play-icon-overlay {
+  transform: translate(-50%, -50%) scale(1.1);
+  background-color: white;
+}
+
+.featured-badge {
+  background-color: var(--secondary);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.featured-video-meta {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Filtros y grid de videos */
+.video-library-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filter-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-tag {
+  background-color: transparent;
+  border: 1px solid var(--light);
+  color: var(--gray);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.filter-tag.active,
+.filter-tag:hover {
+  background-color: var(--secondary);
+  color: white;
+  border-color: var(--secondary);
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.video-card {
+  background-color: white;
+  border-radius: var(--card-border-radius);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--soft-shadow);
+}
+
+.video-duration {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.video-card-content {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Para que el contenido ocupe el espacio */
+}
+
+.video-category {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--secondary);
+  text-transform: uppercase;
+}
+
+/* Paginación */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  gap: 0.5rem;
+}
+
+.page-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--secondary);
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.page-item.active .page-link {
+  color: #fff;
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+}
+
+.page-link:hover {
+  background-color: var(--light-gray);
+}
+
+/* --------------------------------------------------------------------------
+   7.6. Sección Configuración
+   -------------------------------------------------------------------------- */
+.settings-card {
+  background-color: #fff;
+  border: 1px solid var(--light);
+  border-radius: var(--card-border-radius);
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.settings-card-header {
+  font-size: 1.3rem;
+  color: var(--primary);
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--light);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+/* Switches para notificaciones */
+.notification-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.notification-item:not(:last-child) {
+  border-bottom: 1px solid var(--light);
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 28px;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: var(--success);
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+/* Zona de peligro */
+.danger-zone {
+  border-color: var(--danger);
+  background-color: rgba(231, 76, 60, 0.05);
+}
+
+.danger-zone .settings-card-header {
+  color: var(--danger);
+}
+
+/* --------------------------------------------------------------------------
+   7.7. Sección Membresía
+   -------------------------------------------------------------------------- */
+.current-plan-card {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.status-badge {
+  display: inline-block;
+  background-color: var(--success);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+/* Opciones de planes */
+.plan-options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.plan-features {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.plan-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.plan-features i {
+  color: var(--success);
+}
+
+.feature-disabled,
+.feature-disabled i {
+  color: var(--gray) !important;
+  text-decoration: line-through;
+}
+
+/* Sección de facturación */
+.billing-history table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+}
+
+.billing-history th,
+.billing-history td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--light);
+}
+
+.billing-history tbody tr:hover {
+  background-color: var(--light-gray);
+}
+
+.invoice-link {
+  color: var(--secondary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.cancel-subscription a {
+  color: var(--gray);
+  text-decoration: none;
+}
+.cancel-subscription a:hover {
+  color: var(--danger);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   8. Animaciones
+   ========================================================================== */
+
+@keyframes circle-fill-animation {
+  0% {
+    stroke-dasharray: 0, 100;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   9. Diseño Responsivo (Media Queries)
+   ========================================================================== */
+
+/* Tablets y escritorios pequeños */
+@media (max-width: 992px) {
+  :root {
+    --sidebar-width: 250px;
+  }
+}
+
+/* Dispositivos móviles grandes y tablets en vertical */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(
+      -100%
+    ); /* Oculta la barra lateral fuera de la pantalla */
+  }
+
+  .sidebar.active {
+    transform: translateX(0); /* Muestra la barra lateral */
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .content-header,
+  .content-section {
+    padding: 1rem;
+  }
+
+  .plan-cards,
+  .week-days {
+    grid-template-columns: 1fr;
+  }
+
+  .nutrition-intro {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+/* Dispositivos móviles pequeños */
+@media (max-width: 576px) {
+  .header-left h1 {
+    font-size: 1.2rem;
+  }
+
+  .user-greeting {
+    display: none; /* Oculta el saludo en pantallas muy pequeñas */
+  }
+
+  .progress-items,
+  .nutrition-facts {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
 }

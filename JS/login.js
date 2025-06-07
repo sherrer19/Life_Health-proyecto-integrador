@@ -23,10 +23,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     window.location.href = '/html/dashboardPeso.html';
                     break;
                 case 'Ganar Masa Muscular':
-                    window.location.href = '/html/dashboard-masa-muscular.html';
+                    window.location.href = '/html/dashboardMasaMuscular.html';
                     break;
                 case 'Tonificar':
-                    window.location.href = '/html/dashboard-tonificar.html';
+                    window.location.href = '/html/dashboardTonificar.html';
                     break;
                 default:
                     window.location.href = '/html/dashboard.html';

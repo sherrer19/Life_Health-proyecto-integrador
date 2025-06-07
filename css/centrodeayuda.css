@@ -683,6 +683,12 @@ main {
 /* Botón flotante de ayuda */
 .floating-help {
   position: fixed;
+  bottom: 95px;
+  right: 30px;
+  z-index: 999;
+}
+.floating-chat {
+  position: fixed;
   bottom: 30px;
   right: 30px;
   z-index: 999;
