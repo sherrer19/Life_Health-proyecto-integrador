@@ -33,10 +33,10 @@ document.addEventListener('DOMContentLoaded', function() {
         users.forEach(user => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td>${user.id || 'N/A'}</td>
-                <td>${user.firstName} ${user.lastName}</td>
+                <td>${user.id || generarNuevoId()}</td>
+                <td>${user.firstName} ${user.lastName || ''}</td>
                 <td>${user.email}</td>
-                <td>${user.recommendedPlan}</td>
+                <td>${user.recommendedPlan || 'No definido'}</td>
                 <td>${user.imc || 'N/A'}</td>
                 <td>
                     <button class="action-btn edit-btn" onclick="openEditModal('${user.email}')">
@@ -49,6 +49,17 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             usersTableBody.appendChild(row);
         });
+    }
+
+    // Generar ID de 4 dígitos
+    function generarNuevoId() {
+        return Math.floor(1000 + Math.random() * 9000); // Número entre 1000 y 9999
+    }
+
+    // Validar formato de email
+    function validarEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
     }
 
     // Buscar usuarios
@@ -74,32 +85,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (user) {
             document.getElementById('userId').value = user.email;
-            document.getElementById('editFirstName').value = user.firstName;
+            document.getElementById('editFirstName').value = user.firstName || '';
             document.getElementById('editEmail').value = user.email;
-            document.getElementById('editPlan').value = user.recommendedPlan;
+            document.getElementById('editPlan').value = user.recommendedPlan || 'Tonificar';
             userModal.style.display = 'flex';
         }
     };
 
-    // Guardar cambios
+    // Guardar cambios (con validación de email)
     userForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        const email = document.getElementById('userId').value;
+        const email = document.getElementById('editEmail').value;
+        
+        if (!validarEmail(email)) {
+            alert('Por favor ingresa un correo electrónico válido');
+            return;
+        }
+
+        const originalEmail = document.getElementById('userId').value;
         const users = JSON.parse(localStorage.getItem('users')) || [];
-        const userIndex = users.findIndex(u => u.email === email);
+        const userIndex = users.findIndex(u => u.email === originalEmail);
 
         if (userIndex !== -1) {
+            // Verificar si el nuevo email ya existe (excepto para el usuario actual)
+            if (email !== originalEmail && users.some(u => u.email === email)) {
+                alert('Este correo electrónico ya está registrado');
+                return;
+            }
+
             users[userIndex] = {
                 ...users[userIndex],
                 firstName: document.getElementById('editFirstName').value,
-                email: document.getElementById('editEmail').value,
+                email: email,
                 recommendedPlan: document.getElementById('editPlan').value
             };
 
             localStorage.setItem('users', JSON.stringify(users));
             loadUsers();
             userModal.style.display = 'none';
-            alert('Usuario actualizado correctamente.');
+            alert('Usuario actualizado correctamente');
         }
     });
 
@@ -110,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
             users = users.filter(u => u.email !== email);
             localStorage.setItem('users', JSON.stringify(users));
             loadUsers();
-            alert('Usuario eliminado correctamente.');
+            alert('Usuario eliminado correctamente');
         }
     };
 });
