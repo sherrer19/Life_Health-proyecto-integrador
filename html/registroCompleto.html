@@ -45,7 +45,7 @@
             <!-- Campo oculto para el plan recomendado -->
             <input type="hidden" id="recommendedPlan" name="recommendedPlan" />
 
-            <!-- Sección de Información Personal (igual que tu original, sin datos físicos) -->
+           
             <fieldset class="form-fieldset">
               <legend>Información Personal</legend>
               <div class="row">
@@ -76,14 +76,12 @@
                 </div>
                 <div class="form-group col-md-6">
                   <label for="city">Ciudad*</label>
-                  <select id="city" required>
-                    <option value="" disabled selected>
-                      Selecciona tu ciudad
-                    </option>
-                    <option value="medellin">Medellín</option>
-                    <option value="bogota">Bogotá</option>
-                    <!-- (otras ciudades) -->
-                  </select>
+                  <input
+                    type="text"
+                    id="city"
+                    required
+                    placeholder="Ej: Pereira"
+                  />
                 </div>
               </div>
 
@@ -97,7 +95,7 @@
               </div>
             </fieldset>
 
-            <!-- Sección de Datos de Cuenta (igual que tu original) -->
+            <!-- Sección de Datos de Cuenta -->
             <fieldset class="form-fieldset">
               <legend>Datos de Cuenta</legend>
               <div class="form-group">

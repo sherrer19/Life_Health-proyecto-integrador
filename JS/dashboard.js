@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const App = {
-    // 1. CONFIGURACIÓN Y ESTADO INICIAL
+    //  CONFIGURACIÓN Y ESTADO INICIAL
     config: {
       classes: {
         ACTIVE_SECTION: "active-section",
@@ -15,10 +15,10 @@ document.addEventListener("DOMContentLoaded", function () {
         configuracion: { icon: "fa-cog", name: "Configuración" },
         membresia: { icon: "fa-credit-card", name: "Membresía" },
       },
-      // === BASE DE DATOS CENTRALIZADA PARA TODOS LOS PLANES ===
+      // BASE DE DATOS CENTRALIZADA PARA TODOS LOS PLANES
       planDetails: {
         "Perder Peso": {
-          /* ... datos del plan Perder Peso ... */
+          /*  datos del plan Perder Peso  */
           routines: [
             {
               day: "Lunes",
@@ -309,9 +309,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     DOMElements: {},
 
-    // init(), cacheDOMElements(), handleAuthentication(), etc...
-    // Toda la lógica restante del objeto App se mantiene exactamente igual.
-    // ... (el resto de tu código JS que ya tienes) ...
     init() {
       this.cacheDOMElements();
       if (!this.handleAuthentication()) return;

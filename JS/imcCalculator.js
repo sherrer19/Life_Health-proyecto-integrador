@@ -1,4 +1,4 @@
-// Función principal: Calcula el IMC y muestra el resultado
+// Calcula el IMC y muestra el resultado
 function calculateIMC() {
     // Obtener datos del formulario
     const age = parseInt(document.getElementById('age').value);
@@ -22,7 +22,7 @@ function calculateIMC() {
     document.getElementById('imcCategory').textContent = category;
     document.getElementById('recommendedPlan').textContent = recommendedPlan;
 
-    // Seleccionar automáticamente el radio button del plan recomendado
+    // Seleccionar automáticamente el boton del plan recomendado
     document.querySelector(`input[value="${recommendedPlan}"]`).checked = true;
 
     // Ocultar formulario inicial y mostrar resultados
@@ -39,7 +39,7 @@ function calculateIMC() {
     }));
 }
 
-// Función auxiliar: Clasifica el IMC según la OMS y recomienda un plan
+// Clasifica el IMC según la OMS y recomienda plan
 function getImcDiagnosis(imc) {
     let category, recommendedPlan;
 
@@ -60,13 +60,13 @@ function getImcDiagnosis(imc) {
     return { category, recommendedPlan };
 }
 
-// Evento al enviar el formulario (botón "Calcular Mi Plan")
+// Evento al enviar el formulario (botón Calcular Mi Plan)
 document.getElementById('imcForm').addEventListener('submit', function(e) {
     e.preventDefault();
     calculateIMC();
 });
 
-// Evento al confirmar el plan (botón "Confirmar y Registrarme")
+// Evento al confirmar el plan (boton Confirmar y Registrarme)
 document.getElementById('confirmPlanBtn').addEventListener('click', function() {
     // Obtener el plan seleccionado (automático o manual)
     const selectedPlan = document.querySelector('input[name="goal"]:checked').value;
