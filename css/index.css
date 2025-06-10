@@ -561,6 +561,111 @@ a {
     color: #7f8c8d;
 }
 
+.plan-options {
+  padding: 2rem;
+  background-color: #f5f9ff;
+  border-radius: 12px;
+}
+
+.subsection-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1c1c1e;
+  margin-bottom: 1.5rem;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.plan-options-grid {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.plan-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 2px solid #dbeafe;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.2s ease;
+}
+
+.plan-card:hover {
+  transform: translateY(-4px);
+}
+
+.plan-card h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.plan-price {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.billing-cycle {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.plan-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #374151;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.plan-features .feature-disabled {
+  color: #9ca3af;
+}
+
+.btn {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #3b82f6;
+  color: white;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #2563eb;
+}
+
+.btn-secondary {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+.btn-secondary:hover {
+  background-color: #e5e7eb;
+}
+
+
 /* Botón flotante de ayuda */
 .floating-help {
   position: fixed;
