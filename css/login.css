@@ -326,11 +326,12 @@ body {
 
 .social-btn.facebook {
     background-color: var(--facebook);
-    color: white;
+    border: 1px solid #ddd;
+    /* color: #344e86; */
 }
 
 .social-btn.facebook:hover {
-    background-color: #344e86;
+    /* background-color: #344e86; */
 }
 
 .register-link {
